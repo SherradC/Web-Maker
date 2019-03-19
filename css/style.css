@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+form{
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+input{
+    display: block;
+}
+
+label{
+    display: block;
+}
+
+a{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.reg, .web{
+    background-color: blue;
+}
+
+.log{
+    background-color: green;
+}
+
+.title{
+    margin-left: 10px;
+}
+
+i{
+    float: right;
+    display: block;
+}
