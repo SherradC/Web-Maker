@@ -41,3 +41,17 @@ i{
     float: right;
     display: block;
 }
+
+.cancel{
+    background-color: red;
+}
+
+.heading{
+    display: flex;
+    
+
+}
+
+.heading .back{
+    float: left;
+}
