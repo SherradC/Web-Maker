@@ -5,9 +5,17 @@ html{
 
 body{
     height: 100%;
+    
+}
+
+.ppt{
     padding-top: 75px;
 }
 
 .bgrad{
     background-image: linear-gradient(to bottom right, black, red);
+}
+
+.navbar i{
+    float: left;
 }
