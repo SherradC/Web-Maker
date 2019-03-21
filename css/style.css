@@ -1,3 +1,10 @@
+*{
+    font-family: 'Cormorant SC', serif;
+    /* font-family: 'Eater', cursive; */
+    /* font-family: 'Prociono', serif; */
+    /* font-family: 'Spirax', cursive; */
+}
+
 html{
     height: 100%;  
     width: 100%;
@@ -5,19 +12,23 @@ html{
 
 body{
     height: 100%;
-
-    background: url(../Images/smoke3.jpg) no-repeat center center/cover;
-    
+    background: url(../Images/smoke4.jpg) no-repeat center center;
+    font-size: 1.3em;
 }
 
 .ppt{
-    padding-top: 75px;
+    padding-top: 175px;
+}
+
+.ppt2{
+    padding-top: 12vh;
 }
 
 .bgrad{
     /* background-image: linear-gradient(to bottom right, black, red); */
 }
 
-.navbar i{
-    float: left;
+body nav span{
+   font-family: spirax, cursive;
+   font-size: 1.5em;
 }

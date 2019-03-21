@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" 
         crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+SC|Eater|Prociono|Spirax" rel="stylesheet">    
 
 
     <link rel="stylesheet" href="../css/bootstrap.css"/>
@@ -16,28 +17,30 @@
     <title>Edit Sites</title>
 </head>
 <body>
-    <nav>
-        <a href="/Websites/website-list.html"><i class="fas fa-arrow-circle-left"></i></a>
-        <span>Edit Website</span>
-        <a href="/Websites/website-list.html"><i class="far fa-check-circle"></i></a>
+    <nav class= "navbar navbar-light bg-dark fixed-top">
+            <a class="text-white" href="/Websites/website-list.html"><i class="fas fa-arrow-circle-left"></i></a>
+            <span class=" text-white">Edit Website</span>
+            <a class="text-white float-right" href="/Websites/website-list.html"><i class="far fa-check-circle"></i></a>
     </nav>
-    <section class="container">
-        <div class="form">
-            <div>
-                <label for="WebsiteName">Website Name</label>
-                <input type="text" placeholder="Site Title Here">
+    <section class=" ppt">
+        <div class="form container">
+            <div class="form-group">
+                <label class="d-block text-white" for="WebsiteName">Website Name</label>
+                <input class="form-control" type="text" placeholder="Site Title Here">
             </div>
-            <div>
-                <label for="Description">Website Description</label>
-                <textarea name="Description" id="Description">Website Description</textarea>
+            <div class="form-group">
+                <label class="d-block text-white" for="Description">Website Description</label>
+                <textarea class="form-control" name="Description" id="Description">Website Description</textarea>
             </div>
-            <div>
-                <a href="/Websites/website-list.html">Delete</a>
+            <div class="form-group">
+                <a class="btn btn-block btn-outline-info text-white" href="/Websites/website-list.html">Delete</a>
             </div>
         </div>
     </section>
-    <footer>
-        <a href="../User/profile.html"><i class="fas fa-user-alt"></i></a>
-    </footer>
+    <section class="navbar navbar-light fixed-bottom bg-dark">
+        <footer class="">
+            <a href="profile.html"><i class="fas fa-user-alt text-white"></i></a>
+        </footer>
+    </section>
 </body>
 </html>
