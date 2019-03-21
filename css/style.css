@@ -5,6 +5,8 @@ html{
 
 body{
     height: 100%;
+
+    background: url(../Images/smoke3.jpg) no-repeat center center/cover;
     
 }
 
@@ -13,7 +15,7 @@ body{
 }
 
 .bgrad{
-    background-image: linear-gradient(to bottom right, black, red);
+    /* background-image: linear-gradient(to bottom right, black, red); */
 }
 
 .navbar i{
