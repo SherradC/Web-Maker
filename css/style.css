@@ -32,3 +32,11 @@ body nav span{
    font-family: spirax, cursive;
    font-size: 1.5em;
 }
+
+nav a{
+    color: white;
+}
+
+i:hover{
+    color: red;
+}
