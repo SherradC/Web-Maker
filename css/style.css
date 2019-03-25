@@ -39,7 +39,7 @@ nav a{
 }
 
 i:hover{
-    color: #DC2B00;
+    color: red;
 }
 
 a:hover{
@@ -53,4 +53,8 @@ form a{
 
 form a i{
     color:green;
+}
+
+.but{
+    font-size: 1em;
 }
