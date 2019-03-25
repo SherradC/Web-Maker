@@ -35,8 +35,22 @@ body nav span{
 
 nav a{
     color: white;
+    padding-top: 7px;
 }
 
 i:hover{
-    color: red;
+    color: #DC2B00;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #DC2B00;
+}
+
+form a{
+    color: green;
+}
+
+form a i{
+    color:green;
 }
