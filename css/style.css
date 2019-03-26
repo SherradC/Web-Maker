@@ -13,7 +13,7 @@ html{
 
 body{
     height: 100%;
-    background: url(../Images/smoke4.jpg) no-repeat center center;
+    background: url(../Images/smoke4.jpg) repeat-y center center;
     font-size: 1.3em;
 }
 
@@ -58,4 +58,16 @@ form a i{
 
 .but{
     font-size: 1em;
+}
+
+.ppb{
+    padding-bottom: 50px;
+}
+
+.icon-right{
+    position: absolute;
+    right: 15px;
+    z-index: 1;
+    padding-top: 15px;
+    background: black;
 }
