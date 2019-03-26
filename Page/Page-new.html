@@ -16,27 +16,29 @@
     <title>New Page</title>
 </head>
 <body>
-    <nav>
-        <a href="/Websites/website-list.html"><i class="fas fa-arrow-circle-left"></i></a>
-        <span>New Page</span>
-        <a href="/Page/Page-list.html"><i class="far fa-check-circle"></i></a>
-    </nav>
-    <section class="container">
-        <div class="form">
-            <div>
-                <label for="Name">Name</label>
-                <input type="text" placeholder="Page Name">
-            </div>
-            <div>
-                <label for="Title">Title</label>
-                <input name="Title" id="Title">Website Description</input>
-            </div>
+    <nav class="navbar navbar-light bg-success fixed-top">
+        <div class="navbar-brand w-100 text-center text-white">
+            <a href="/Page/Page-list.html"><i class="float-left fas fa-arrow-circle-left"></i></a>
+            <span class="">New Pages</span>
+            <a href="/Page/Page-list.html"><i class="far fa-check-circle float-right "></i></a>
         </div>
+    </nav>
+    <section>
+        <form class="container ppt">
+            <div class="form-group">
+                <label class="text-white" for="name" name="name" id="name" >Name</label>
+                <input type="text" class="form-control" placeholder="Page Name">
+            </div>
+            <div class="form-group">
+                <label for="title" name="title" id="title" class="text-white">Title</label>
+                <input type="text" class="form-control" placeholder="Page Title">
+            </div>
+        </form>
     </section>
     <section class="navbar navbar-light fixed-bottom bg-dark row">
-        <footer class="">
+        <footer class="w-100">
             <span></span>
-            <a class= text-white href="../User/profile.html"><i class="pl-3 far fa-id-badge fa-2x"></i></a>
+            <a class= text-white href="../User/profile.html"><i class="float-right pr-4 far fa-id-badge fa-2x"></i></a>
             <span></span>
         </footer>
     </section>
