@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
+
 
 export default class WebsiteNew extends Component {
   render() {
@@ -58,7 +60,7 @@ export default class WebsiteNew extends Component {
         <section className="navbar navbar-light fixed-bottom bg-dark row">
             <footer className="">
                 <span></span>
-                <Link className= text-white to="../User/profile.html"><i className="pl-3 far fa-id-badge fa-2x"></i></Link>
+                <Link className= "text-white" to="../User/profile.html"><i className="pl-3 far fa-id-badge fa-2x"></i></Link>
                 <span></span>
             </footer>
         </section>

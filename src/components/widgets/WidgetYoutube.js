@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+
 
 export default class WidgetYoutube extends Component {
   render() {
@@ -29,12 +31,12 @@ export default class WidgetYoutube extends Component {
                         <label htmlFor="width">Width</label>
                         <input type="range" className="form-control-range" id="formControlRange" step="1" min="1" max="100"/>
                     </div>
-                    <a className="btn btn-block btn-outline-danger text-white but" to="/Widgets/widget-list.html">Delete</a>
+                    <Link className="btn btn-block btn-outline-danger text-white but" to="/Widgets/widget-list.html">Delete</Link>
                 </form>
         </section>
         <section className="navbar navbar-light fixed-bottom bg-info row">
             <footer className="w-100">
-                <a className= "text-white" to="../User/profile.html"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></a>
+                <Link className= "text-white" to="../User/profile.html"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
                 <span></span>
             </footer>
         </section>

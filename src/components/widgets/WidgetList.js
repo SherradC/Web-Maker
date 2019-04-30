@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+
 
 export default class WidgetList extends Component {
   render() {
@@ -31,7 +33,7 @@ export default class WidgetList extends Component {
                     <Link className="text-white" to="/widgets/widget-image.html"><i className="fas fa-cog"></i></Link>
                     <i className="fas fa-bars"></i>
                 </div>
-                <img className="img-fluid" src="http://www.bostonbakedbeans.com/globalassets/assets/boston-baked-beans/bbb-logo-1024x207.png" alt="Boston Baked Bean">
+                <img className="img-fluid" src="http://www.bostonbakedbeans.com/globalassets/assets/boston-baked-beans/bbb-logo-1024x207.png" alt="Boston Baked Bean"/>
             </div>
             <div className="text-white">
                 <div className="float-right">
@@ -53,7 +55,7 @@ export default class WidgetList extends Component {
                     <i className="fas fa-bars"></i>
                 </div>
                 <div className="embed-responsive embed-responsive-16by9">
-                    <iframe className="width="560" height="315" src="https://www.youtube.com/embed/3jjCoxP-4mY?start=31" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe title="Baked Beans" width="560" height="315" src="https://www.youtube.com/embed/3jjCoxP-4mY?start=31" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div className="text-white">
@@ -68,7 +70,7 @@ export default class WidgetList extends Component {
             <footer className="w-100">
                 <i className="text-white fas fa-play pl-4 pt-3"></i>
                 <i className="text-white fas fa-eye pl-4 pt-3"></i>
-                <Link className= text-white to="../User/profile.html"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
+                <Link className= "text-white" to="../User/profile.html"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
                 <span></span>
             </footer>
         </section>

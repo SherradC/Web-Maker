@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+
 
 export default class WidgetImage extends Component {
   render() {
@@ -39,7 +41,7 @@ export default class WidgetImage extends Component {
         </section>
         <section className="navbar navbar-light fixed-bottom bg-info row">
             <footer className="w-100">
-                <Link className= text-white to="../User/profile.html"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
+                <Link className= "text-white" to="../User/profile.html"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
                 <span></span>
             </footer>
         </section>
