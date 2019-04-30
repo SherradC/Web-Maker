@@ -7,33 +7,33 @@ export default class PageEdit extends Components {
             <div>
                 <nav className="navbar navbar-light bg-success fixed-top">
                     <div className="navbar-brand w-100 text-center text-white">
-                        <a href="/Websites/website-list.html"><i className="fas fa-arrow-circle-left float-left"></i></a>
+                        <Link to="/Websites/website-list.html"><i className="fas fa-arrow-circle-left float-left"></i></Link>
                         <span className="pl-3">Pages</span>
-                        <a href="/Page/Page-new.html"><i className="far fa-plus-square float-right"></i></a>
+                        <Link to="/Page/Page-new.html"><i className="far fa-plus-square float-right"></i></Link>
                     </div>
                 </nav>
                 <section className="container">
                         <form className="ppt">
                                 <ul className="list-group ">
                                     <li className="list-group-item">
-                                        <a href="/Widgets/widget-list.html">Home</a>
-                                        <a className="float-right" href="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></a>
+                                        <Link to="/Widgets/widget-list.html">Home</Link>
+                                        <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                                     </li>
                                     <li className="list-group-item">
-                                        <a href="/Widgets/widget-list.html">Blogs</a>
-                                        <a className="float-right" href="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></a>
+                                        <Link to="/Widgets/widget-list.html">Blogs</Link>
+                                        <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                                     </li>
                                     <li className="list-group-item">
-                                        <a href="/Widgets/widget-list.html">Blog Post</a>
-                                        <a className="float-right" href="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></a>
+                                        <Link to="/Widgets/widget-list.html">Blog Post</Link>
+                                        <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                                     </li>
                                     <li className="list-group-item">
-                                        <a href="/Widgets/widget-list.html">About</a>
-                                        <a className="float-right" href="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></a>
+                                        <Link to="/Widgets/widget-list.html">About</Link>
+                                        <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                                     </li>
                                     <li className="list-group-item">
-                                            <a href="/Widgets/widget-list.html">Contact</a>
-                                            <a className="float-right" href="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></a>
+                                            <Link to="/Widgets/widget-list.html">Contact</Link>
+                                            <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                                     </li>
                                 </ul>
                             </form>
@@ -41,11 +41,12 @@ export default class PageEdit extends Components {
                 <section className="navbar navbar-light fixed-bottom bg-success pt-3 row">
                     <footer className="w-100">
                         <span></span>
-                        <a className= "text-white" href="../User/profile.html"><i className="float-right pr-5 far fa-id-badge fa-2x"></i></a>
+                        <Link className= "text-white" to="../User/profile.html"><i className="float-right pr-5 far fa-id-badge fa-2x"></i></Link>
                         <span></span>
                     </footer>
                 </section>
             </div>
-        )
+        );
     }
 }
+
