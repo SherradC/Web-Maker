@@ -7,32 +7,32 @@ export default class PageList extends Component {
       <div>
         <nav className="navbar navbar-light bg-success fixed-top">
             <div className="navbar-brand w-100 text-center text-white">
-                <Link to="/Websites/website-list.html"><i className="fas fa-arrow-circle-left float-left"></i></Link>
+                <Link to="/user/:uid/website"><i className="fas fa-arrow-circle-left float-left"></i></Link>
                 <span className="pl-3">Pages</span>
-                <Link to="/Page/Page-new.html"><i className="far fa-plus-square float-right"></i></Link>
+                <Link to="/user/:uid/website/:wid/page/new"><i className="far fa-plus-square float-right"></i></Link>
             </div>
         </nav>
         <section className="container">
                 <form className="ppt">
                         <ul className="list-group ">
                             <li className="list-group-item">
-                                <Link to="/Widgets/widget-list.html">Home</Link>
+                                <Link to="/user/:uid/website/:wid/page/:pid/widget">Home</Link>
                                 <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                             </li>
                             <li className="list-group-item">
-                                <Link to="/Widgets/widget-list.html">Blogs</Link>
+                                <Link to="/user/:uid/website/:wid/page/:pid/widget">Blogs</Link>
                                 <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                             </li>
                             <li className="list-group-item">
-                                <Link to="/Widgets/widget-list.html">Blog Post</Link>
+                                <Link to="/user/:uid/website/:wid/page/:pid/widget">Blog Post</Link>
                                 <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                             </li>
                             <li className="list-group-item">
-                                <Link to="/Widgets/widget-list.html">About</Link>
+                                <Link to="/user/:uid/website/:wid/page/:pid/widget">About</Link>
                                 <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                             </li>
                             <li className="list-group-item">
-                                    <Link to="/Widgets/widget-list.html">Contact</Link>
+                                    <Link to="/user/:uid/website/:wid/page/:pid/widget">Contact</Link>
                                     <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
                             </li>
                         </ul>
@@ -41,7 +41,7 @@ export default class PageList extends Component {
         <section className="navbar navbar-light fixed-bottom bg-success pt-3 row">
             <footer className="w-100">
                 <span></span>
-                <Link className= "text-white" to="../User/profile.html"><i className="float-right pr-5 far fa-id-badge fa-2x"></i></Link>
+                <Link className= "text-white" to="/user/:uid"><i className="float-right pr-5 far fa-id-badge fa-2x"></i></Link>
                 <span></span>
             </footer>
         </section>

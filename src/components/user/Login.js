@@ -18,10 +18,10 @@ export default class Login extends Component {
                         <input className= "form-control" type="password" placeholder="Password"/>
                     </div>
                     <div className="form-group">
-                        <Link className="btn btn-outline-warning btn-block but" to="/User/profile.html">Login</Link>
+                        <Link className="btn btn-outline-warning btn-block but" to="/user/:uid">Login</Link>
                     </div>
                     <div className="form-group">
-                        <Link className="btn btn-outline-primary btn-block but" to="register.html">Register</Link>
+                        <Link className="btn btn-outline-primary btn-block but" to="/register">Register</Link>
                     </div>
                 </form>
             </div>
