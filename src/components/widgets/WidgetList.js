@@ -8,9 +8,9 @@ export default class WidgetList extends Component {
       <div>
         <nav className="navbar navbar-light bg-info fixed-top">
             <div className="navbar-brand w-100 text-center text-white">
-                <Link to="/Page/Page-list.html"><i className="float-left fas fa-arrow-circle-left"></i></Link>
+                <Link to="/user/:uid/website/:wid/page"><i className="float-left fas fa-arrow-circle-left"></i></Link>
                 <span className="">Widgets</span>
-                <Link to="/widgets/widget-chooser.html"><i className="far fa-plus-square float-right"></i></Link>
+                <Link to="/user/:uid//website/:wid/page/:pid/widget/new"><i className="far fa-plus-square float-right"></i></Link>
             </div>
         </nav>
         <section className="container-fluid ppt ppb">
@@ -70,7 +70,7 @@ export default class WidgetList extends Component {
             <footer className="w-100">
                 <i className="text-white fas fa-play pl-4 pt-3"></i>
                 <i className="text-white fas fa-eye pl-4 pt-3"></i>
-                <Link className= "text-white" to="../User/profile.html"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
+                <Link className= "text-white" to="/user/:uid"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
                 <span></span>
             </footer>
         </section>

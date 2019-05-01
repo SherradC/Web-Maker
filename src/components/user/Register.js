@@ -22,10 +22,10 @@ export default class Register extends Component {
                         <input className= "form-control" type="password" placeholder="confirm password"/>
                     </div>
                     <div className="form-group">
-                        <Link className="btn btn-outline-warning btn-block but" to="/User/profile.html">Register</Link>
+                        <Link className="btn btn-outline-warning btn-block but" to="/user/:uid">Register</Link>
                     </div>
                     <div className="form-group">
-                        <Link className="btn btn-outline-primary btn-block but" to="/User/login.html">Cancel</Link>
+                        <Link className="btn btn-outline-primary btn-block but" to="/login">Cancel</Link>
                     </div>
                 </form>
             </div>

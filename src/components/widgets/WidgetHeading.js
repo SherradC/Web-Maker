@@ -8,9 +8,9 @@ export default class WidgetHeading extends Component {
       <div>
         <nav className="navbar navbar-light bg-info fixed-top">
             <div className="navbar-brand w-100 text-center text-white">
-                <Link to="/Widgets/widget-list.html"><i className="float-left fas fa-arrow-circle-left"></i></Link>
+                <Link to="/user/:uid/website/:wid/page/:pid/widget"><i className="float-left fas fa-arrow-circle-left"></i></Link>
                 <span className="">Edit Widget</span>
-                <Link to="/Widgets/widget-list.html"><i className="far fa-plus-square float-right"></i></Link>
+                <Link to="/user/:uid/website/:wid/page/:pid/widget"><i className="far fa-plus-square float-right"></i></Link>
             </div>
         </nav>
         <section className="container ppt text-white">
@@ -27,12 +27,12 @@ export default class WidgetHeading extends Component {
                     <label htmlFor="size">Size</label>
                     <input className="form-control" type="number" placeholder="Size of content" id="size" name="size"/>
                 </div>
-                <Link className="btn btn-block btn-outline-danger text-white but" to="/Widgets/widget-list.html">Delete</Link>
+                <Link className="btn btn-block btn-outline-danger text-white but" to="/user/:uid/website/:wid/page/:pid/widget">Delete</Link>
             </form>
         </section>
         <section className="navbar navbar-light fixed-bottom bg-info row">
             <footer className="w-100">
-                <Link className= "text-white" to="../User/profile.html"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
+                <Link className= "text-white" to="/user/:uid"><i className="float-right pr-4 far fa-id-badge fa-2x"></i></Link>
                 <span></span>
             </footer>
         </section>

@@ -9,7 +9,7 @@ export default class Profile extends Component {
         <nav className="navbar navbar-light bg-dark fixed-top row">
             <div className="navbar-brand w-100 text-center">
                 <span className="text-white">Profile</span>
-                <Link to="profile.html"><i className="far fa-check-circle float-right pt-2"></i></Link>
+                <Link to="/user/:uid"><i className="far fa-check-circle float-right pt-2"></i></Link>
             </div>
         </nav>
         <div className="container">
@@ -31,16 +31,16 @@ export default class Profile extends Component {
                     <input className="form-control form-group" type="text" id="LastName" Name="LastName" placeholder="Beans"/>
                 </div>
                 <div className="form-group" >
-                    <Link className="btn btn-outline-warning btn-block but" to="../Websites/website-list.html">Websites</Link>
+                    <Link className="btn btn-outline-warning btn-block but" to="/user/:uid/website/:wid/page/:pid/widget">Websites</Link>
                 </div>
                 <div className="form-group">
-                    <Link className="btn btn-outline-primary btn-block but" to="../user/login.html">Logout</Link>
+                    <Link className="btn btn-outline-primary btn-block but" to="/login">Logout</Link>
                 </div>
             </section>
         </div>
         <nav className="navbar fixed-bottom bg-dark">
             <footer className="navbar-brand text-white w-100">
-            <Link to="profile.html"><i className="pl-3 far fa-id-badge fa-2x"></i></Link>
+            <Link to="/user/:uid"><i className="pl-3 far fa-id-badge fa-2x"></i></Link>
             </footer>
         </nav>
       </div>

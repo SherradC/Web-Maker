@@ -17,23 +17,23 @@ export default class PageList extends Component {
                         <ul className="list-group ">
                             <li className="list-group-item">
                                 <Link to="/user/:uid/website/:wid/page/:pid/widget">Home</Link>
-                                <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
+                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
                             </li>
                             <li className="list-group-item">
                                 <Link to="/user/:uid/website/:wid/page/:pid/widget">Blogs</Link>
-                                <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
+                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
                             </li>
                             <li className="list-group-item">
                                 <Link to="/user/:uid/website/:wid/page/:pid/widget">Blog Post</Link>
-                                <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
+                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
                             </li>
                             <li className="list-group-item">
                                 <Link to="/user/:uid/website/:wid/page/:pid/widget">About</Link>
-                                <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
+                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
                             </li>
                             <li className="list-group-item">
                                     <Link to="/user/:uid/website/:wid/page/:pid/widget">Contact</Link>
-                                    <Link className="float-right" to="../Page/Page-edit.html"><i className="fas fa-user-cog"></i></Link>
+                                    <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
                             </li>
                         </ul>
                     </form>
