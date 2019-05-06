@@ -1,33 +1,73 @@
-.App {
-  text-align: center;
+*{
+  font-family: 'Cormorant SC', serif;
+  /* font-family: 'Eater', cursive; */
+  /* font-family: 'Prociono', serif; */
+  /* font-family: 'Spirax', cursive; */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+html{
+  height: 100%;  
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body{
+  height: 100%;
+  background: url(/src/Images/smoke4.jpg) repeat-y center center;
+  font-size: 1.3em;
+}
+
+.ppt{
+  padding-top: 175px;
+}
+
+.ppt2{
+  padding-top: 12vh;
+}
+
+/* .bgrad{
+   background-image: linear-gradient(to bottom right, black, red); 
+} */
+
+body nav span{
+ font-family: spirax, cursive;
+ font-size: 1.5em;
+}
+
+nav a i{
   color: white;
+  padding-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+i:hover{
+  color: red;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a:hover{
+  text-decoration: none;
+  color: #DC2B00;
+}
+
+form a{
+  color: green;
+}
+
+form a i{
+  color:green;
+}
+
+.but{
+  font-size: 1em;
+}
+
+.ppb{
+  padding-bottom: 50px;
+}
+
+.icon-right{
+  position: absolute;
+  right: 15px;
+  z-index: 1;
+  padding-top: 15px;
+  background: black;
 }

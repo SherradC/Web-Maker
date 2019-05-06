@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
 export default class Login extends Component {
-  componentDidMount(){
-    console.log(this.props.users);
-  }
-
+  
   state = {
     username: "",
     password: ""
@@ -44,7 +41,7 @@ export default class Login extends Component {
         return;
       }
     }
-    alert("Your username and password isnt in our records, ya heard!")
+    alert ("Your username and password isnt in our records!");
   }
   
 

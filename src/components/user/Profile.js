@@ -65,7 +65,7 @@ export default class Profile extends Component {
         <nav className="navbar navbar-light bg-dark fixed-top row">
             <div className="navbar-brand w-100 text-center">
                 <span className="text-white">Profile</span>
-                <button className= "float-right btn text-white" form= "profileForm" to="/user/:uid"><i className="far fa-check-circle float-right "></i></button>
+                <button className= "float-right btn text-white" form= "profileForm" ><i className="far fa-check-circle float-right "></i></button>
             </div>
         </nav>
         <div className="container">
@@ -87,7 +87,7 @@ export default class Profile extends Component {
                     <input className="form-control form-group" type="text" id="LastName" name="LastName" placeholder="Beans" value={lastName} onChange={this.onChange} />
                 </div>
                 <div className="form-group" >
-                    <Link className="btn btn-outline-warning btn-block but" to= "/user/:uid/website">Websites</Link>
+                    <Link className="btn btn-outline-warning btn-block but" to={`/user/${this.props.match.params.uid}/website`}>Websites</Link>
                 </div>
                 <div className="form-group">
                     <Link className="btn btn-outline-primary btn-block but" to="/login">Logout</Link>
@@ -96,7 +96,7 @@ export default class Profile extends Component {
         </div>
         <nav className="navbar fixed-bottom bg-dark">
             <footer className="navbar-brand text-white w-100">
-            <Link to="/user/:uid"><i className="pl-3 far fa-id-badge fa-2x"></i></Link>
+            <Link to={`/user/${this.props.match.params.uid}`}><i className="pl-3 far fa-id-badge fa-2x"></i></Link>
             </footer>
         </nav>
       </div>
