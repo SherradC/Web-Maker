@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route} from "react-router-dom"
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Login from './components/user/Login';
 import Register from "./components/user/Register"
 import Profile from "./components/user/Profile"
@@ -59,6 +59,22 @@ export default class App extends React.Component {
     
   }
 
+  addWeb = (newWeb) => {
+    const newWebs = this.state.websites;
+    newWebs.push(newWeb);
+    this.setState({
+      websites: newWebs
+    });
+  }
+
+  addPage = newPage => {
+    const newPages = this.state.pages;
+    newPages.push(newPage);
+    this.setState({
+      pages: newPages
+    });
+  }
+
 
 state = {
 
@@ -98,21 +114,24 @@ state = {
   render() {
     return (
       <Router>
+        <Switch>
           <Route exact path="/" render= {props => (<Login {...props} users={this.state.users}/>)} />
           <Route exact path="/login" render= {props => (<Login {...props} users={this.state.users}/>)}></Route>
           <Route exact path="/register" render= {props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)}></Route>
           <Route exact path="/user/:uid" render= {props => (<Profile {...props} users={this.state.users} updateUser={this.updateUser}/>)}></Route>
           <Route exact path="/user/:uid/website" render= {props => (<WebsiteList {...props} websites={this.state.websites}/>)}></Route>
+          <Route exact path="/user/:uid/website/new" render= {props => (<WebsiteNew {...props} websites={this.state.websites} addWeb = {this.addWeb}/>)}></Route>
           <Route exact path="/user/:uid/website/:wid" render= {props => (<WebsiteEdit {...props} websites={this.state.websites}/>)}></Route>
-          <Route exact path="/user/:uid/website/new" render= {props => (<WebsiteNew {...props} websites={this.state.websites}/>)}></Route>
+          
           <Route exact path="/user/:uid/website/:wid/page" render= {props => (<PageList {...props} pages={this.state.pages}/>)}></Route>
-          <Route exact path="/user/:uid/website/:wid/page/new" render= {props => (<PageNew {...props} pages={this.state.pages}/>)}></Route>
+          <Route exact path="/user/:uid/website/:wid/page/new" render= {props => (<PageNew {...props} pages={this.state.pages} addPage={this.addPage}/>)}></Route>
           <Route exact path="/user/:uid/website/:wid/page/:pid" render= {props => (<PageEdit {...props} pages={this.state.pages}/>)}></Route>
           <Route exact path="/user/:uid/website/:wid/page/:pid/widget" render= {props => (<WidgetList {...props} widgets={this.state.widgets}/>)}></Route>
           <Route exact path="/user/:uid//website/:wid/page/:pid/widget/new" render= {props => (<WidgetChooser {...props} widgets={this.state.widgets}/>)}></Route>
           {/* <Route exact path="/user/:uid/widgets-heading" component={WidgetHeading}></Route>
           <Route exact path="/user/:uid/widgets-image" component={WidgetImage}></Route>
           <Route exact path="/user/:uid/widgets-youtube" component={WidgetYoutube}></Route> */}
+        </Switch>
       </Router>
     );
   }

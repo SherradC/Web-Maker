@@ -2,7 +2,38 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
 export default class WebsiteEdit extends Component {
+
+    state={
+        uid: this.props.match.params.uid,
+        websites:[],
+        name:"",
+        description:""
+      }
+    
+    
+        componentDidMount(){
+          this.filterWebsites(this.props.websites);
+      }
+    
+      filterWebsites = (websites) => {
+        const newWebsites = websites.filter(
+          website => (website.developerId === this.state.uid)
+        )
+        this.setState({
+          websites: newWebsites
+        })
+      }
+
+      onChange= e => {
+          this.setState({
+              [e.target.name]: e.target.value
+          });
+      }
+
+
   render() {
+      const {uid} =this.state;
+
     return (
         <div>
             <nav className= "navbar navbar-light bg-dark fixed-top row">
@@ -14,29 +45,23 @@ export default class WebsiteEdit extends Component {
                 <div className="col-lg-8 text-center text-white">
                     <Link className="d-lg-none float-left" to="/user/:uid/website"><i className="fas fa-arrow-circle-left"></i></Link>
                     <span className="">Edit Website</span>
-                    <Link className="float-right" to="/user/:uid/website"><i className="far fa-check-circle"></i></Link>
+                    <button className="float-right btn text-white" to="/user/:uid/website"><i className="far fa-check-circle fa-2x"></i></button>
                 </div>
             </nav>
             <section className="ppt row">
                 <div className="col-lg-4 d-none d-lg-block ">
                     <form className="container">
                         <ul className="list-group ">
-                            <li className="list-group-item">
-                                <Link to="/user/:uid/website/:wid/page">Ferrara Candy Company</Link>
-                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
-                            </li>
-                            <li className="list-group-item">
-                                <Link to="/user/:uid/website/:wid/page">Munchies</Link>
-                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
-                            </li>
-                            <li className="list-group-item">
-                                <Link to="/user/:uid/website/:wid/page">Boston Baked Beans</Link>
-                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
-                            </li>
-                            <li className="list-group-item">
-                                <Link to="/user/:uid/website/:wid/page">Sweet Tooth Blog</Link>
-                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-user-cog"></i></Link>
-                            </li>
+                            {
+                            this.state.websites.map(
+                                (website) => (
+                                <li key={website._id} className= "list-group-item">
+                                    <Link to={`/user/${uid}/website/${website._id}/page`}>{website.name}</Link>
+                                    <Link className="float-right" to={`/user/${uid}/website/${website._id}`}><i className="fas fa-user-cog"></i></Link>
+                                </li>
+                                )
+                            )
+                        }
                         </ul>
                     </form>
                 </div>
@@ -44,11 +69,11 @@ export default class WebsiteEdit extends Component {
                     <form className="container">
                         <div className="form-group">
                             <label className="d-block text-white" htmlFor="WebsiteName">Website Name</label>
-                            <input className="form-control" type="text" placeholder="Site Name Here"/>
+                            <input className="form-control" name="name" id="name" onChange={this.onChange} value={this.state.name} type="text" placeholder="Site Name Here"/>
                         </div>
                         <div className="form-group pb-3">
                             <label className="d-block text-white" htmlFor="Description">Website Description</label>
-                            <textarea row="5" className="form-control" name="Description" id="Description">Website Description</textarea>
+                            <textarea row="5" className="form-control" name="description" placeholder= "Website Description" onChange={this.onChange} value={this.state.description} id="description">Website Description</textarea>
                         </div>
                         <div className="form-group">
                             <Link className="btn btn-block btn-outline-danger text-white but" to="/user/:uid/website">Delete</Link>

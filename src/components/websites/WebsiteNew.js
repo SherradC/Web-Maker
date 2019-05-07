@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
-
+import uuid from "uuid";
 
 export default class WebsiteNew extends Component {
 
     state={
         uid: this.props.match.params.uid,
-        websites:[]
+        websites:[],
+        name:"",
+        description:""
       }
     
     
@@ -23,6 +25,26 @@ export default class WebsiteNew extends Component {
         })
       }
 
+      onChange= e => {
+          this.setState({
+              [e.target.name]: e.target.value
+          });
+      }
+
+      onSubmit= async e => {
+        e.preventDefault();
+        const {name, description, uid} = this.state;
+        const newWeb = {
+            _id: uuid(),
+            // (parseInt(websites[websites.length - 1]._id) + 1).toString,
+            name,
+            developerId: uid,
+            description
+        }
+        await this.props.addWeb(newWeb);
+        this.filterWebsites(this.props.websites);
+      }
+
 
   render() {
       const {uid} = this.state;
@@ -32,12 +54,12 @@ export default class WebsiteNew extends Component {
             <div className="col-lg-4 d-none d-lg-block text-center text-white">
                 <Link className="float-left" to={`/user/${uid}/website`}><i className="fas fa-arrow-circle-left"></i></Link>
                 <span className="">Websites</span>
-                <Link className="float-right" to={`/user/${uid}/website`}><i className="far fa-plus-square"></i></Link>
+                <Link  className="float-right" to={`/user/${uid}/website`}><i className="far fa-plus-square"></i></Link>
             </div>
             <div className="col-lg-8 text-center text-white">
                 <Link className="d-lg-none float-left" to={`/user/${uid}/website`}><i className="fas fa-arrow-circle-left"></i></Link>
                 <span className="">New Website</span>
-                <Link className="float-right" to={`/user/${uid}/website`}><i className="far fa-check-circle"></i></Link>
+                <button form= "newWebForm" className="float-right btn text-white" to={`/user/${uid}/website`}><i className="far fa-check-circle"></i></button>
             </div>
         </nav>
         <section className="ppt row">
@@ -58,14 +80,17 @@ export default class WebsiteNew extends Component {
                 </form>
             </div>
             <div className="col-lg-8">
-                <form className="container">
+                <form id="newWebForm" className="container" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label className="d-block text-white" htmlFor="WebsiteName">Name</label>
-                        <input className="form-control" type="text" placeholder="Site Name Here"/>
+                        <input className="form-control" type="text" id="name" name="name" onChange= {this.onChange} value={this.state.name} placeholder="Site Name Here"/>
                     </div>
                     <div className="form-group pb-3">
-                        <label className="d-block text-white" htmlFor="Description">Description</label>
-                        <textarea row="5" className="form-control" name="Description" id="Description" placeholder="Description"></textarea>
+                        <label className="d-block text-white" htmlFor="description">Description</label>
+                        <textarea row="5" className="form-control" name="description" id="description" placeholder="Description" value={this.state.description} onChange={this.onChange}/>
+                    </div>
+                    <div className="form-group">
+                        <button className="btn btn-block btn-outline-warning text-white but" to={`/user/${uid}/website`}>submit</button>
                     </div>
                     <div className="form-group">
                         <Link className="btn btn-block btn-outline-danger text-white but" to={`/user/${uid}/website`}>Delete</Link>
