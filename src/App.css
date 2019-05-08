@@ -12,9 +12,9 @@ html{
 }
 
 body{
-  height: 100%;
-  background: url(/src/Images/smoke4.jpg) repeat-y center center;
+  background: url(./Images/smoke4.jpg) repeat-y center center;
   font-size: 1.3em;
+  margin-top: 100px;
 }
 
 .ppt{
