@@ -5,30 +5,67 @@ export default class WebsiteEdit extends Component {
 
     state={
         uid: this.props.match.params.uid,
+        wid: this.props.match.params.wid,
         websites:[],
         name:"",
         description:""
-      }
+      };
     
     
         componentDidMount(){
           this.filterWebsites(this.props.websites);
+          this.getWebsite(this.state.wid);
       }
-    
+
+        componentDidUpdate(prevProps, prevState, snapshot){
+            if (prevProps.match.params.wid !== this.props.match.params.wid){
+                this.getWebsite(this.props.match.params.wid);
+            }
+        }
+
       filterWebsites = (websites) => {
         const newWebsites = websites.filter(
           website => (website.developerId === this.state.uid)
         )
         this.setState({
           websites: newWebsites
-        })
-      }
+        });
+      };
+
+      getWebsite = wid => {
+          let currentWeb;
+          for (let website of this.props.websites){
+              if(website._id === wid){
+                  currentWeb = website;
+                  break;
+              }
+          }
+          this.setState({
+              name: currentWeb.name,
+              description: currentWeb.description
+          });
+      };
 
       onChange= e => {
           this.setState({
               [e.target.name]: e.target.value
           });
-      }
+      };
+
+      delete = () => {
+          this.props.deleteWeb(this.props.match.params.wid);
+          this.props.history.push(`/users/${this.state.uid}/website`);
+      };
+
+      onSubmit = e => {
+          e.preventDefault();
+          this.props.editWeb(
+              this.props.match.params.wid,
+              this.state.name,
+              this.state.description
+          );
+          this.props.history.push(`/user/${this.state.uid}/website`);
+      };
 
 
   render() {
@@ -45,7 +82,7 @@ export default class WebsiteEdit extends Component {
                 <div className="col-lg-8 text-center text-white">
                     <Link className="d-lg-none float-left" to="/user/:uid/website"><i className="fas fa-arrow-circle-left"></i></Link>
                     <span className="">Edit Website</span>
-                    <button className="float-right btn text-white" to="/user/:uid/website"><i className="far fa-check-circle fa-2x"></i></button>
+                    <button  className="float-right" to={`/user/${uid}/website`}><i form="editWebForm" className="far fa-check-circle"></i></button>
                 </div>
             </nav>
             <section className="ppt row">
@@ -66,7 +103,7 @@ export default class WebsiteEdit extends Component {
                     </form>
                 </div>
                 <div className="col-lg-8">
-                    <form className="container">
+                    <form className="container" onSubmit={this.onSubmit} id="editWebForm">
                         <div className="form-group">
                             <label className="d-block text-white" htmlFor="WebsiteName">Website Name</label>
                             <input className="form-control" name="name" id="name" onChange={this.onChange} value={this.state.name} type="text" placeholder="Site Name Here"/>
@@ -75,8 +112,14 @@ export default class WebsiteEdit extends Component {
                             <label className="d-block text-white" htmlFor="Description">Website Description</label>
                             <textarea row="5" className="form-control" name="description" placeholder= "Website Description" onChange={this.onChange} value={this.state.description} id="description">Website Description</textarea>
                         </div>
+                        <Link
+                            to={`/user/${uid}/website`}
+                            className="btn btn-block btn-outline-warning text-white but mb-3"
+                            >
+                            Cancel
+                        </Link>
                         <div className="form-group">
-                            <Link className="btn btn-block btn-outline-danger text-white but" to="/user/:uid/website">Delete</Link>
+                            <Link onClick={this.delete} className="btn btn-block btn-outline-danger text-white but" to={`/user/${uid}/website`}>Delete</Link>
                         </div>
                     </form>
                 </div>
