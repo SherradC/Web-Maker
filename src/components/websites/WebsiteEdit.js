@@ -75,12 +75,12 @@ export default class WebsiteEdit extends Component {
         <div>
             <nav className= "navbar navbar-light bg-dark fixed-top row">
                 <div className="col-lg-4 d-none d-lg-block text-center text-white">
-                    <Link className="float-left" to="/user/:uid/website"><i className="fas fa-arrow-circle-left"></i></Link>
+                    <Link className="float-left" to={`/user/${uid}/website`}><i className="fas fa-arrow-circle-left"></i></Link>
                     <span className="">Websites</span>
-                    <Link className="float-right" to="/user/:uid/website/:wid/page/new"><i className="far fa-plus-square"></i></Link>
+                    <Link className="float-right" to={`/user/${uid}/website/new`}><i className="far fa-plus-square"></i></Link>
                 </div>
                 <div className="col-lg-8 text-center text-white">
-                    <Link className="d-lg-none float-left" to="/user/:uid/website"><i className="fas fa-arrow-circle-left"></i></Link>
+                    <Link className="d-lg-none float-left" to={`/user/${uid}/website`}><i className="fas fa-arrow-circle-left"></i></Link>
                     <span className="">Edit Website</span>
                     <button  className="float-right" to={`/user/${uid}/website`}><i form="editWebForm" className="far fa-check-circle"></i></button>
                 </div>
@@ -127,7 +127,7 @@ export default class WebsiteEdit extends Component {
             <section className="navbar navbar-light fixed-bottom bg-dark row">
                 <footer className="">
                     <span></span>
-                    <Link className= "text-white" to="/user/:uid"><i className="pl-3 far fa-id-badge fa-2x"></i></Link>
+                    <Link className= "text-white" to={`/user/${uid}`}><i className="pl-3 far fa-id-badge fa-2x"></i></Link>
                     <span></span>
                 </footer>
             </section>

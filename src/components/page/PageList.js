@@ -25,8 +25,8 @@ export default class PageList extends Component {
             )
         )
         this.setState({
-
-        })
+            pages: currentPages
+        });
     }
   render() {
     const {uid, wid} = this.state;

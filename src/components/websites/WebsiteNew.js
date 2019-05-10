@@ -31,7 +31,7 @@ export default class WebsiteNew extends Component {
           });
       }
 
-      onSubmit= async e => {
+      onSubmit= e => {
         e.preventDefault();
         const {name, description, uid} = this.state;
         const newWeb = {
@@ -41,8 +41,8 @@ export default class WebsiteNew extends Component {
             developerId: uid,
             description
         }
-        await this.props.addWeb(newWeb);
-        this.filterWebsites(this.props.websites);
+        this.props.addWeb(newWeb);
+        this.props.history.push(`/user/${this.state.uid}/website`);
       }
 
 
