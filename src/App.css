@@ -69,5 +69,5 @@ form a i{
   right: 15px;
   z-index: 1;
   padding-top: 15px;
-  background: black;
+  background-color: rgba(0,0,0,.1);
 }

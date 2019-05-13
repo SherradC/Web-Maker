@@ -82,7 +82,7 @@ export default class WebsiteEdit extends Component {
                 <div className="col-lg-8 text-center text-white">
                     <Link className="d-lg-none float-left" to={`/user/${uid}/website`}><i className="fas fa-arrow-circle-left"></i></Link>
                     <span className="">Edit Website</span>
-                    <button  className="float-right" to={`/user/${uid}/website`}><i form="editWebForm" className="far fa-check-circle"></i></button>
+                    <button  className="float-right btn btn-lg text-white" form="editWebForm"><i  className="far fa-check-circle"></i></button>
                 </div>
             </nav>
             <section className="ppt row">
@@ -106,11 +106,26 @@ export default class WebsiteEdit extends Component {
                     <form className="container" onSubmit={this.onSubmit} id="editWebForm">
                         <div className="form-group">
                             <label className="d-block text-white" htmlFor="WebsiteName">Website Name</label>
-                            <input className="form-control" name="name" id="name" onChange={this.onChange} value={this.state.name} type="text" placeholder="Site Name Here"/>
+                            <input 
+                                className="form-control" 
+                                name="name" id="name" 
+                                onChange={this.onChange} 
+                                value={this.state.name} 
+                                type="text" 
+                                placeholder="Site Name Here"/>
                         </div>
                         <div className="form-group pb-3">
                             <label className="d-block text-white" htmlFor="Description">Website Description</label>
-                            <textarea row="5" className="form-control" name="description" placeholder= "Website Description" onChange={this.onChange} value={this.state.description} id="description">Website Description</textarea>
+                            <textarea 
+                                row="5" 
+                                className="form-control" 
+                                name="description" 
+                                placeholder= "Website Description" 
+                                onChange={this.onChange} 
+                                value={this.state.description} 
+                                id="description">
+                                Website Description
+                            </textarea>
                         </div>
                         <Link
                             to={`/user/${uid}/website`}

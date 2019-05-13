@@ -59,11 +59,11 @@ export default class WebsiteNew extends Component {
             <div className="col-lg-8 text-center text-white">
                 <Link className="d-lg-none float-left" to={`/user/${uid}/website`}><i className="fas fa-arrow-circle-left"></i></Link>
                 <span className="">New Website</span>
-                <button form= "newWebForm" className="float-right btn text-white" to={`/user/${uid}/website`}><i className="far fa-check-circle"></i></button>
+                <button form= "newWebForm" className="float-right btn btn-lg text-white" to={`/user/${uid}/website`}><i className="far fa-check-circle"></i></button>
             </div>
         </nav>
-        <section className="ppt row">
-            <div className="col-lg-4 d-none d-lg-block ">
+        <section className="row">
+            <div className="col-lg-4 d-none d-lg-block mt-4">
                 <form className="container">
                     <ul className="list-group ">
                         {

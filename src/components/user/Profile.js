@@ -65,10 +65,10 @@ export default class Profile extends Component {
         <nav className="navbar navbar-light bg-dark fixed-top row">
             <div className="navbar-brand w-100 text-center">
                 <span className="text-white">Profile</span>
-                <button className= "float-right btn text-white" form= "profileForm" ><i className="far fa-check-circle float-right "></i></button>
+                <button className= "float-right btn-lg btn text-white" form= "profileForm" ><i className="far fa-check-circle float-right "></i></button>
             </div>
         </nav>
-        <div className="container">
+        <div className="container ppb">
             <form className="py-5" onSubmit={this.onSubmit} id="profileForm">
                 <div className="">
                     <label className="text-light" htmlFor="Username">Username</label>

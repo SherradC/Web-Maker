@@ -3,68 +3,122 @@ import {Link} from 'react-router-dom';
 
 
 export default class WidgetList extends Component {
+
+    state= {
+        uid: "",
+        wid: "",
+        pid: "",
+        widgets: []
+    }
+
+    async componentDidMount() {
+        await this.setState({
+            uid: this.props.match.params.uid,
+            wid: this.props.match.params.wid,
+            pid: this.props.match.params.pid
+        })
+        this.filterWidgets(this.state.pid);
+    }
+
+    filterWidgets = (pid) => {
+        const widgets = this.props.widgets.filter(
+            (widget) => (
+                widget.pageId === pid
+            )
+        )
+
+        this.setState({
+            widgets
+        })
+    }
+
   render() {
+    const {uid, wid, pid, widgets} = this.state;
+
     return (
       <div>
         <nav className="navbar navbar-light bg-info fixed-top">
             <div className="navbar-brand w-100 text-center text-white">
-                <Link to="/user/:uid/website/:wid/page"><i className="float-left fas fa-arrow-circle-left"></i></Link>
+                <Link to={`/user/${uid}/website/${wid}/page`}><i className="float-left fas fa-arrow-circle-left"></i></Link>
                 <span className="">Widgets</span>
-                <Link to="/user/:uid//website/:wid/page/:pid/widget/new"><i className="far fa-plus-square float-right"></i></Link>
+                <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/new`}><i className="far fa-plus-square float-right"></i></Link>
             </div>
         </nav>
-        <section className="container-fluid ppt ppb">
-            <div className="text-white">
-                <div className="float-right">
-                    <Link className="text-white" to="/widgets/widget-heading.html"><i className="fas fa-cog"></i></Link>
-                    <i className="fas fa-bars"></i>
-                </div>
-                <h1>Boston Baked Beans</h1>
-            </div>
-            <div className="text-white">
-                <div className="float-right">
-                    <Link className="text-white" to=""><i className="fas fa-cog"></i></Link>
-                    <i className="fas fa-bars"></i>
-                </div>
-                <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit, dicta excepturi sunt odio fugit ab!</h3>
-            </div>
-            <div className="text-white">
-                <div className="float-right">
-                    <Link className="text-white" to="/widgets/widget-image.html"><i className="fas fa-cog"></i></Link>
-                    <i className="fas fa-bars"></i>
-                </div>
-                <img className="img-fluid" src="http://www.bostonbakedbeans.com/globalassets/assets/boston-baked-beans/bbb-logo-1024x207.png" alt="Boston Baked Bean"/>
-            </div>
-            <div className="text-white">
-                <div className="float-right">
-                    <Link className="text-white" to=""><i className="fas fa-cog"></i></Link>
-                    <i className="fas fa-bars"></i>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates reiciendis fugiat eum iste excepturi? Quae nemo voluptates rem eum harum, illo vel hic totam alias cumque laudantium facere beatae inventore minus consequatur architecto rerum, animi corporis maxime esse? Perferendis accusamus corporis incidunt, a deleniti maxime alias totam obcaecati possimus quia recusandae deserunt dolorem autem nisi aperiam ab perspiciatis voluptates odit nobis nesciunt cumque dolores temporibus quisquam aliquam. Ea, ullam aut? Exercitationem doloribus autem accusantium, nulla, facilis atque reprehenderit minima deleniti alias, non id provident sit fuga vel blanditiis nobis ducimus. Optio fugiat, repudiandae adipisci eligendi harum veniam nemo nisi mollitia.</p>
-            </div>
-            <div className="text-white">
-                <div className="float-right">
-                    <Link className="text-white" to=""><i className="fas fa-cog"></i></Link>
-                    <i className="fas fa-bars"></i>
-                </div>
-                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, veniam!</h3>
-            </div>
-            <div className="text-white">
-                <div className="float-right icon-right">
-                    <Link className="text-white" to="/widgets/widget-youtube.html"><i className="fas fa-cog"></i></Link>
-                    <i className="fas fa-bars"></i>
-                </div>
-                <div className="embed-responsive embed-responsive-16by9">
-                    <iframe title="Baked Beans" width="560" height="315" src="https://www.youtube.com/embed/3jjCoxP-4mY?start=31" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div className="text-white">
-                <div className="float-right">
-                    <Link className="text-white" to=""><i className="fas fa-cog"></i></Link>
-                    <i className="fas fa-bars"></i>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates reiciendis fugiat eum iste excepturi? Quae nemo voluptates rem eum harum, illo vel hic totam alias cumque laudantium facere beatae inventore minus consequatur architecto rerum, animi corporis maxime esse? Perferendis accusamus corporis incidunt, a deleniti maxime alias totam obcaecati possimus quia recusandae deserunt dolorem autem nisi aperiam ab perspiciatis voluptates odit nobis nesciunt cumque dolores temporibus quisquam aliquam. Ea, ullam aut? Exercitationem doloribus autem accusantium, nulla, facilis atque reprehenderit minima deleniti alias, non id provident sit fuga vel blanditiis nobis ducimus. Optio fugiat, repudiandae adipisci eligendi harum veniam nemo nisi mollitia.</p>
-            </div>
+        <section className="container-fluid ppt ppb text-white">
+        {
+            widgets.map(
+                (widget) => {
+                    switch(widget.widgetType){
+                        case "HEADING":
+                            return (
+                                <div key={widget._id}>
+                                    <div className="absolute-right">
+                                        <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
+                                            <i className="fas fa-cog float-right" />
+                                        </Link>
+                                        <span>
+                                            <i className="fas fa-bars float-right" />
+                                        </span>
+                                    </div>
+                                    <div>
+                                        {widget.size === 1 && <h1>{widget.text}</h1>}
+                                        {widget.size === 2 && <h2>{widget.text}</h2>}
+                                        {widget.size === 3 && <h3>{widget.text}</h3>}
+                                        {widget.size === 4 && <h4>{widget.text}</h4>}
+                                        {widget.size === 5 && <h5>{widget.text}</h5>}
+                                        {widget.size === 6 && <h6>{widget.text}</h6>}
+                                    </div>
+                                </div>
+                            )
+                        case "IMAGE":
+                            return (
+                                <div key={widget._id}>
+                                    <div className="icon-right">
+                                        <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
+                                            <i className="fas fa-cog float-right" />
+                                        </Link>
+                                        <span>
+                                            <i className="fas fa-bars float-right" />
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <img
+                                            className="img-fluid"
+                                            src={widget.url}
+                                            alt=""
+                                            width={widget.width}
+                                        />
+                                    </div>
+                                </div>
+                            )
+                        case "YOUTUBE":
+                            return (
+                                <div key={widget._id}>
+                                    <div className="icon-right">
+                                        <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
+                                            <i className="fas fa-cog float-right" />
+                                        </Link>
+                                        <span>
+                                            <i className="fas fa-bars float-right" />
+                                        </span>
+                                    </div>
+                                    <div className="embed-responsive embed-responsive-16by9" style={{width: widget.width}}>
+                                        <iframe
+                                            src={widget.url}
+                                            title={widget._id}
+                                            frameBorder="0"
+                                            allow="autoplay; encrypted-media"
+                                            allowFullScreen
+                                        />
+                                    </div>
+                                </div>
+                            )
+                        default:
+                            return <div></div>;
+                    }
+                }
+            )
+        }
         </section>
         <section className="navbar navbar-light fixed-bottom bg-info row">
             <footer className="w-100">

@@ -46,7 +46,7 @@ export default class PageList extends Component {
                                 this.state.pages.map(
                                     (page) => (
                                         <li className= "list-group-item">
-                                            <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}></Link>
+                                            <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}>{page.name}</Link>
                                             <Link className= "float-right" to={`/user/${uid}/website/${wid}/`}><i className= "fas fa-user-cog"></i></Link>
                                         </li>
                                     )

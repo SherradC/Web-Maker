@@ -35,7 +35,7 @@ export default class WebsiteList extends Component {
             <span className="text-white">Websites</span>
             <Link className="text-white" to={`/user/${uid}/website/new`}><i className="far fa-plus-square"></i></Link>
         </nav>
-        <form className="container ppt">
+        <form className="container">
                 <ul className="list-group ">
                 {
                   this.state.websites.map(
