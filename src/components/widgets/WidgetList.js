@@ -52,7 +52,7 @@ export default class WidgetList extends Component {
                         case "HEADING":
                             return (
                                 <div key={widget._id}>
-                                    <div className="absolute-right">
+                                    <div className="float-right">
                                         <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
                                             <i className="fas fa-cog float-right" />
                                         </Link>

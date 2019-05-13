@@ -36,7 +36,7 @@ export default class PageList extends Component {
             <div className="navbar-brand w-100 text-center text-white">
                 <Link to={`/user/${uid}/website`}><i className="fas fa-arrow-circle-left float-left"></i></Link>
                 <span className="pl-3">Pages</span>
-                <Link to={`"/user/${uid}/website/${wid}/page/new"`}><i className="far fa-plus-square float-right"></i></Link>
+                <Link to={`/user/${uid}/website/${wid}/page/new`}><i className="far fa-plus-square float-right"></i></Link>
             </div>
         </nav>
         <section className="container">
@@ -47,7 +47,7 @@ export default class PageList extends Component {
                                     (page) => (
                                         <li className= "list-group-item">
                                             <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}>{page.name}</Link>
-                                            <Link className= "float-right" to={`/user/${uid}/website/${wid}/`}><i className= "fas fa-user-cog"></i></Link>
+                                            <Link className= "float-right" to={`/user/${uid}/website/${wid}/page/${page._id}`}><i className= "fas fa-user-cog"></i></Link>
                                         </li>
                                     )
                                 )

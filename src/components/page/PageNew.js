@@ -45,7 +45,7 @@ export default class PageNew extends Component {
             <div className="navbar-brand w-100 text-center text-white">
                 <Link to={`/user/${uid}/website/${wid}/page`}><i className="float-left fas fa-arrow-circle-left"></i></Link>
                 <span className="">New Pages</span>
-                <button className= "btn text-white" form="newPageForm"><i className="far fa-check-circle float-right "></i></button>
+                <button className= "btn btn-lg float-right text-white" form="newPageForm"><i className="far fa-check-circle float-right "></i></button>
             </div>
         </nav>
         <section>

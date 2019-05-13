@@ -74,7 +74,7 @@ export default class PageEdit extends Component {
                         </button>
                     </div>
                 </nav>
-                <section className="container">
+                <section className="container text-white">
                     <form className="ppt" id="editPageForm" onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">

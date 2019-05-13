@@ -30,39 +30,39 @@ export default class WidgetChooser extends Component {
                 <span className="">Choose Widget</span>
             </div>
         </nav>
-        <section className="ppt" >
+        <section className="" >
             <ul className="container list-group text-center">
-                <li className="list-group-item">
+                <li className="list-group-item list-group-item-dark">
                     <span onClick={this.createWidget.bind(this, "HEADING")}>
                         Heading
                     </span>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         <Link to="#">Label</Link>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         <Link to="#">Text Input</Link>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         <Link to="#">Link</Link>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         <Link to="#">Button</Link>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         <span onClick={this.createWidget.bind(this, "IMAGE")}>
                             Image
                         </span>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         <span onClick={this.createWidget.bind(this, "YOUTUBE")}>
                             Youtube
                         </span>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         <Link to="#">Data Table</Link>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         <Link to="#">Repeater</Link>
                 </li>
             </ul>
