@@ -75,3 +75,7 @@ form a i{
 li a {
   color: black;
 }
+
+.cp {
+  cursor: pointer;
+}

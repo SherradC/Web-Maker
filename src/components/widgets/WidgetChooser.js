@@ -33,7 +33,7 @@ export default class WidgetChooser extends Component {
         <section className="" >
             <ul className="container list-group text-center">
                 <li className="list-group-item list-group-item-dark">
-                    <span onClick={this.createWidget.bind(this, "HEADING")}>
+                    <span className="cp" onClick={this.createWidget.bind(this, "HEADING")}>
                         Heading
                     </span>
                     </li>
@@ -50,12 +50,12 @@ export default class WidgetChooser extends Component {
                         <Link to="#">Button</Link>
                     </li>
                     <li className="list-group-item list-group-item-dark">
-                        <span onClick={this.createWidget.bind(this, "IMAGE")}>
+                        <span className="cp" onClick={this.createWidget.bind(this, "IMAGE")}>
                             Image
                         </span>
                     </li>
                     <li className="list-group-item list-group-item-dark">
-                        <span onClick={this.createWidget.bind(this, "YOUTUBE")}>
+                        <span className="cp" onClick={this.createWidget.bind(this, "YOUTUBE")}>
                             Youtube
                         </span>
                     </li>
