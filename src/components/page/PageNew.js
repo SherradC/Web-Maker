@@ -49,7 +49,7 @@ export default class PageNew extends Component {
             </div>
         </nav>
         <section>
-            <form className="container ppt" id="newPageForm" onSubmit={this.onSubmit}>
+            <form className="container" id="newPageForm" onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label className="text-white" htmlFor="name" name="name" id="name" >Name</label>
                     <input type="text" className="form-control" placeholder="Page Name" 
