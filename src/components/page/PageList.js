@@ -40,7 +40,7 @@ export default class PageList extends Component {
             </div>
         </nav>
         <section className="container">
-                <form className="ppt">
+                <form>
                         <ul className="list-group ">
                             {
                                 this.state.pages.map(
