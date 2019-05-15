@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import uuid from 'uuid';
 
 
 export default class Register extends Component {
@@ -21,31 +23,45 @@ export default class Register extends Component {
         this.register(username,password,password2);
     }
 
-    register(username, password, password2) {
+    async register (username, password, password2) {
         if (password !== password2){
             alert("Not matching passwords");
             return;
         }
-
-        for (let user of this.props.users){
-            if(user.username === username){
-                alert("Username is taken, try again!");
-                return;
+        // Check if username is available
+        const res = await axios.get(`/api/user?username=${username}`)
+        if (res.data){
+            alert("Username is taken, try again!")
+            return;
+        } else {
+            const newUser= {
+                _id: uuid(),
+                username,
+                password,
+                email: "",
+                firstName: "",
+                lastName: ""
             }
+            const res2 = await axios.post("/api/user", newUser);
+            this.props.history.push(`/user/${res2.data._id}`);
         }
-
-        const newUser= {
-            _id: (parseInt(this.props.users[this.props.users.length - 1]._id) + 1).toString,
-            username,
-            password,
-            email: "",
-            firstName: "",
-            lastName: ""
-        }
-        this.props.addUser(newUser);
-
-        this.props.history.push(`/user/${newUser._id}`);
     }
+
+
+
+    
+    //     const newUser= {
+    //         _id: (parseInt(this.props.users[this.props.users.length - 1]._id) + 1).toString,
+    //         username,
+    //         password,
+    //         email: "",
+    //         firstName: "",
+    //         lastName: ""
+    //     }
+    //     this.props.addUser(newUser);
+
+    //     this.props.history.push(`/user/${newUser._id}`);
+    // }
 
   render() {
       const {username, password, password2} = this.state
@@ -79,3 +95,4 @@ export default class Register extends Component {
     )
   }
 }
+

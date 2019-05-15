@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
-
+import axios from 'axios';
 
 export default class Profile extends Component {
 
@@ -9,20 +9,22 @@ export default class Profile extends Component {
         password:"",
         email: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        oldUsername: ""
+
     }
 
 
-    componentDidMount(){
+    async componentDidMount(){
         const uid = this.props.match.params.uid;
-        
-        for(let user of this.props.users){
-            if (user._id === uid) {
-                this.showUser(user);
-                return;
-            }
+        const res = await axios.get(`/api/user/${uid}`);
+
+        if (res.data){
+            this.showUser(res.data);
+        } else {
+            alert("ID unknown");
         }
-        alert("ID unknown");
+    
     }
 
     showUser = (user) => {
@@ -33,7 +35,8 @@ export default class Profile extends Component {
             email, 
             firstName, 
             lastName,
-            password
+            password,
+            oldUsername: username
         });
     }
 
@@ -43,19 +46,28 @@ export default class Profile extends Component {
         });
     }
 
-    onSubmit = e => {
+    onSubmit = async e => {
         e.preventDefault();
-        const {username, email, firstName, lastName, password} = this.state;
-        const newUser = {
-            _id: this.props.match.params.uid,
-            username,
-            password,
-            email,
-            firstName,
-            lastName
-        }
+        const {username, email, firstName, lastName, password, oldUsername} = this.state;
+        
+        if(username !== oldUsername){
+            const res = await axios.get(`/api/user?username=${username}`);
 
-        this.props.updateUser(newUser);
+            if(res.data){
+                alert("Come again!")
+                return;
+            } else {
+                const newUser = {
+                    _id: this.props.match.params.uid,
+                    username,
+                    password,
+                    email,
+                    firstName,
+                    lastName
+        }
+                const res = await axios.put(`/api/user`, newUser);
+            }
+        }
     }
 
   render() {

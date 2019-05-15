@@ -17,15 +17,6 @@ import WidgetEdit from './components/widgets/WidgetEdit';
 
 export default class App extends React.Component {
 
-  addUser = (user) => {
-    const newUsers = this.state.users;
-    newUsers.push(user);
-    this.setState({
-      user: newUsers
-    })
-  }
-
-
   userNameUsed = (username) => {
     for (let user of this.state.users){
       if(username === user.username) {
@@ -157,13 +148,6 @@ deleteWidget = (wgid) => {
 
 state = {
 
-   users: [
-    {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com"},
-    {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com"},
-    {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com"},
-    {_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
-  ],
-
   websites: [
     { _id: "123", name: "Facebook", developerId: "456", description: "Lorem" },
     { _id: "234", name: "Tweeter",  developerId: "456", description: "Lorem" },
@@ -194,9 +178,9 @@ state = {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
-          <Route exact path="/login" render= { props => (<Login {...props} users={this.state.users} />)} />
-          <Route exact path="/register" render= { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)}/>
+          <Route exact path="/" component = {Login} />
+          <Route exact path="/login" component = {Login} />
+          <Route exact path="/register" component = {Register}/>
           <Route exact path="/user/:uid" render= { props => (<Profile {...props} users={this.state.users} updateUser={this.updateUser}/>)}/>
           <Route exact path="/user/:uid/website" render= { props => (<WebsiteList {...props} websites={this.state.websites}/>)} />
           <Route exact path="/user/:uid/website/new" render={ props => (<WebsiteNew {...props} websites={this.state.websites} addWeb={this.addWeb}/>)} />
