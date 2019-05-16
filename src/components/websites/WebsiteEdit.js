@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 export default class WebsiteEdit extends Component {
 
@@ -12,16 +13,11 @@ export default class WebsiteEdit extends Component {
       };
     
     
-        componentDidMount(){
-          this.filterWebsites(this.props.websites);
+      async componentDidMount(){
+        const res= await axios.get(`/api/user/${this.state.uid}/website`)
+         await  this.filterWebsites(res.data);
           this.getWebsite(this.state.wid);
       }
-
-        componentDidUpdate(prevProps, prevState, snapshot){
-            if (prevProps.match.params.wid !== this.props.match.params.wid){
-                this.getWebsite(this.props.match.params.wid);
-            }
-        }
 
       filterWebsites = (websites) => {
         const newWebsites = websites.filter(
@@ -34,7 +30,7 @@ export default class WebsiteEdit extends Component {
 
       getWebsite = wid => {
           let currentWeb;
-          for (let website of this.props.websites){
+          for (let website of this.state.websites){
               if(website._id === wid){
                   currentWeb = website;
                   break;
@@ -52,18 +48,20 @@ export default class WebsiteEdit extends Component {
           });
       };
 
-      delete = () => {
-          this.props.deleteWeb(this.props.match.params.wid);
-          this.props.history.push(`/users/${this.state.uid}/website`);
+      delete = async () => {
+        await axios.delete(`/api/website/${this.state.wid}`);
+          this.props.history.push(`/user/${this.state.uid}/website`);
       };
 
-      onSubmit = e => {
+      onSubmit = async e => {
           e.preventDefault();
-          this.props.editWeb(
-              this.props.match.params.wid,
-              this.state.name,
-              this.state.description
-          );
+        const newWeb = {
+            _id: this.state.uid,
+            name: this.state.name,
+            description: this.state.description,
+            developerId: this.state.uid
+        }
+        await axios.put('/api/website', newWeb);
           this.props.history.push(`/user/${this.state.uid}/website`);
       };
 
@@ -85,7 +83,7 @@ export default class WebsiteEdit extends Component {
                     <button  className="float-right btn btn-lg text-white" form="editWebForm"><i  className="far fa-check-circle"></i></button>
                 </div>
             </nav>
-            <section className="ppt row">
+            <section className="row">
                 <div className="col-lg-4 d-none d-lg-block ">
                     <form className="container">
                         <ul className="list-group ">

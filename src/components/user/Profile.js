@@ -56,19 +56,22 @@ export default class Profile extends Component {
             if(res.data){
                 alert("Come again!")
                 return;
-            } else {
-                const newUser = {
-                    _id: this.props.match.params.uid,
-                    username,
-                    password,
-                    email,
-                    firstName,
-                    lastName
+            } 
         }
-                const res = await axios.put(`/api/user`, newUser);
-            }
+        const newUser = {
+            _id: this.props.match.params.uid,
+            username,
+            password,
+            email,
+            firstName,
+            lastName
         }
+        const res = await axios.put(`/api/user`, newUser);
+        alert('Update Successfully')
+        this.showUser(res.data);
     }
+    
+
 
   render() {
       const {username, email, firstName, lastName} = this.state;

@@ -12,7 +12,8 @@ export default class Login extends Component {
   onChange = e => { 
     this.setState({
       [e.target.name]: e.target.value
-    }) // if (e.target.name === "username"){
+    })
+     // if (e.target.name === "username"){
       //   this.setState({
       //     username: e.target.value
       //   })
@@ -37,6 +38,7 @@ export default class Login extends Component {
 
   login = async user => {
     const res = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
+    console.log(res.data)
     if (res.data){
       this.props.history.push(`/user/${res.data._id}`)
     } else {
@@ -53,7 +55,7 @@ export default class Login extends Component {
                 <h1>Login</h1>
             </div>
             <div className="logform">
-                <form action="" className="form" onSubmit={this.onSubmit}>
+                <form className="form" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <input className= "form-control" name = "username" type="username" placeholder="Username" value={this.state.username} onChange={this.onChange}/>
                     </div>
