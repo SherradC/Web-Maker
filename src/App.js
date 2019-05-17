@@ -17,39 +17,6 @@ import WidgetEdit from './components/widgets/WidgetEdit';
 
 export default class App extends React.Component {
 
-  addPage = newPage => {
-    const newPages = this.state.pages;
-    newPages.push(newPage);
-    this.setState({
-      pages: newPages
-    });
-  }
-
-  editPage = newPage => {
-    const newPages = this.state.pages.map(
-        (page) => {
-            if(page._id === newPage._id) {
-                page = newPage
-            }
-            return page;
-        }
-    )
-    this.setState({
-        pages: newPages
-    })
-}
-
-deletePage = pid => {
-    const newPages = this.state.pages.filter(
-        (page) => (
-            page._id !== pid
-        )
-    )
-    this.setState({
-        pages: newPages
-    })
-}
-
 editWidget = newWidget => {
     
     const newWidgets = this.state.widgets.map(
@@ -85,13 +52,6 @@ deleteWidget = (wgid) => {
 }
 
 state = {
-
-  pages:[
-    { _id: "321", name: "Post 1", websiteId: "456", title: "Lorem" },
-    { _id: "432", name: "Post 2", websiteId: "456", title: "Lorem" },
-    { _id: "543", name: "Post 3", websiteId: "456", title: "Lorem" }
-  ],
-  
   widgets:[
     { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
     { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
@@ -113,9 +73,9 @@ state = {
           <Route exact path="/user/:uid/website" component = {WebsiteList} />
           <Route exact path="/user/:uid/website/new" component = {WebsiteNew} />
           <Route exact path="/user/:uid/website/:wid" component = {WebsiteEdit} />
-          <Route exact path="/user/:uid/website/:wid/page" render={ props => (<PageList {...props} pages={this.state.pages} />)} />
-          <Route exact path="/user/:uid/website/:wid/page/new" render={ props => (<PageNew {...props} pages={this.state.pages} addPage={this.addPage} />)} />
-          <Route exact path="/user/:uid/website/:wid/page/:pid" render={ props => (<PageEdit {...props} pages={this.state.pages} editPage={this.editPage} deletePage={this.deletePage} />)} />
+          <Route exact path="/user/:uid/website/:wid/page" component = {PageList} />
+          <Route exact path="/user/:uid/website/:wid/page/new" component = {PageNew} />
+          <Route exact path="/user/:uid/website/:wid/page/:pid" component = {PageEdit} />
           <Route exact path="/user/:uid/website/:wid/page/:pid/widget" render={ props=>(<WidgetList {...props} widgets={this.state.widgets} />)} />
           <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" render={props=>(<WidgetChooser {...props} addWidget={this.addWidget} />)} />
           <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={ props=>(<WidgetEdit {...props} widgets={this.state.widgets} editWidget={this.editWidget} deleteWidget={this.deleteWidget} />)} />

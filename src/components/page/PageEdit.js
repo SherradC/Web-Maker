@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import Axios from 'axios';
 
 export default class PageEdit extends Component {
     
@@ -17,20 +18,15 @@ export default class PageEdit extends Component {
             wid: this.props.match.params.wid,
             pid: this.props.match.params.pid
         })
-        const page = this.getPage();
-        this.setState({
-            name: page.name,
-            title: page.title
-        })
+        this.getPage();
     }
 
-    getPage = () => {
-        for(let page of this.props.pages){
-            if(page._id === this.state.pid){
-                return page;
-            }
-        }
-        return null;
+    getPage = async () => {
+        const res = await Axios.get(`/api/page/${this.state.pid}`)
+        this.setState({
+            name: res.data.name,
+            title: res.data.title
+        })
     }
 
     onChange = e => {
@@ -39,12 +35,12 @@ export default class PageEdit extends Component {
         })
     }
 
-    onDelete = () => {
-        this.props.deletePage(this.state.pid);
+    onDelete = async () => {
+        await Axios.delete(`/api/page/${this.state.pid}`)
         this.props.history.push(`/user/${this.state.uid}/website/${this.state.wid}/page`)
     }
 
-    onSubmit = e => {
+    onSubmit = async e => {
         e.preventDefault();
         const newPage = {
             _id: this.state.pid,
@@ -52,7 +48,7 @@ export default class PageEdit extends Component {
             websiteId: this.state.wid,
             title: this.state.title
         }
-        this.props.editPage(newPage);
+        await Axios.put("/api/page", newPage);
         this.props.history.push(`/user/${this.state.uid}/website/${this.state.wid}/page`)
     }
 
@@ -75,7 +71,7 @@ export default class PageEdit extends Component {
                     </div>
                 </nav>
                 <section className="container text-white">
-                    <form className id="editPageForm" onSubmit={this.onSubmit}>
+                    <form  id="editPageForm" onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">
                                 <b>Name</b>
