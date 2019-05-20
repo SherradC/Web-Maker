@@ -51,17 +51,6 @@ deleteWidget = (wgid) => {
     })
 }
 
-state = {
-  widgets:[
-    { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
-    { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-  { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url:"https://i.pinimg.com/236x/be/36/77/be3677f45870cc66f389ee7fa52d28aa--reaction-pictures-kpop.jpg "},
-     { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-    { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://www.youtube.com/embed/LdF2RcelRg0"},
-  ]
-}
-
-
   render() {
     return (
       <Router>
