@@ -65,9 +65,9 @@ deleteWidget = (wgid) => {
           <Route exact path="/user/:uid/website/:wid/page" component = {PageList} />
           <Route exact path="/user/:uid/website/:wid/page/new" component = {PageNew} />
           <Route exact path="/user/:uid/website/:wid/page/:pid" component = {PageEdit} />
-          <Route exact path="/user/:uid/website/:wid/page/:pid/widget" render={ props=>(<WidgetList {...props} widgets={this.state.widgets} />)} />
-          <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" render={props=>(<WidgetChooser {...props} addWidget={this.addWidget} />)} />
-          <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={ props=>(<WidgetEdit {...props} widgets={this.state.widgets} editWidget={this.editWidget} deleteWidget={this.deleteWidget} />)} />
+          <Route exact path="/user/:uid/website/:wid/page/:pid/widget" component = {WidgetList} />
+          <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" component = {WidgetChooser} />
+          <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" component = {WidgetEdit} />
         </Switch>
       </Router>
     );

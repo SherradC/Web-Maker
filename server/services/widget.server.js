@@ -35,4 +35,26 @@ module.exports = function(app) {
     })
 
     // Update widget
+    app.put("/api/widget", (req , res) => {
+        const newWidget = req.body;
+        widgets = widgets.map(
+            (widget) => {
+                if(widget._id === newWidget._id){
+                    widget = newWidget;
+                }
+            return widget;
+            }
+        )
+        res.json(newWidget);
+    })
+    // Delete widget by given id
+    app.delete("/api/widget/:wgid", (req, res) => {
+        const wgid = req.params["wgid"];
+        const widget = widgets.find(
+            (widget) => (widget._id === wgid)
+        );
+        const index = widgets.indexOf(widget);
+        widgets.splice(index, 1);
+        res.json(widget);
+    })
 }
