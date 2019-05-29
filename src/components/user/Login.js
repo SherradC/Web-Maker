@@ -38,7 +38,6 @@ export default class Login extends Component {
 
   login = async user => {
     const res = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
-    console.log(res.data)
     if (res.data){
       this.props.history.push(`/user/${res.data._id}`)
     } else {
