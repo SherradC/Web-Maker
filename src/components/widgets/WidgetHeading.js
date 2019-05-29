@@ -28,7 +28,7 @@ export default class WidgetHeading extends Component {
                         className ="btn btn-lg text-white float-right"
                         form="headingForm">
                         <i 
-                        className="far fa-plus-square float-right">
+                        className="far fa-check-circle">
                         </i>
                     </button>
                 </div>

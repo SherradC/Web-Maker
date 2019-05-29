@@ -29,7 +29,7 @@ export default class WidgetImage extends Component {
                     className="btn btn-lg text-white float-right" 
                     form="imgForm">
                     <i 
-                        className="far fa-plus-square float-right">
+                        className="far fa-check-circle">
                     </i>
                 </button>
             </div>
@@ -66,9 +66,10 @@ export default class WidgetImage extends Component {
                         id="width"
                         value={width}
                         onChange={this.onChange}
-                        step="1" 
                         min="1" 
-                        max="100"/>
+                        max="100"
+                        step="1"
+                        />
                 </div>
                 <div className="form-group">
                     <label htmlFor="upload">Upload</label>

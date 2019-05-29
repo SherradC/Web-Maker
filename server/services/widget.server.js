@@ -27,7 +27,7 @@ module.exports = function(app) {
 
     // Get widget by id
     app.get("/api/widget/:wgid", (req, res) => {
-        const wgid = reg.params["wgid"];
+        const wgid = req.params["wgid"];
         const widget = widgets.find(
             (widget) => (widget._id === wgid)
         )

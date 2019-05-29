@@ -54,7 +54,7 @@ export default class Profile extends Component {
             const res = await axios.get(`/api/user?username=${username}`);
 
             if(res.data){
-                alert("Come again!")
+                alert("In use, come again!")
                 return;
             } 
         }

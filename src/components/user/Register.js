@@ -46,9 +46,6 @@ export default class Register extends Component {
             this.props.history.push(`/user/${res2.data._id}`);
         }
     }
-
-
-
     
     //     const newUser= {
     //         _id: (parseInt(this.props.users[this.props.users.length - 1]._id) + 1).toString,

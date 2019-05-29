@@ -29,7 +29,7 @@ export default class WidgetYoutube extends Component {
                     className="btn btn-lg float-right text-white"
                     form="youtubeForm"
                     ><i 
-                        className="far fa-plus-square float-right">
+                        className="far fa-check-circle">
                     </i>
                 </button>
             </div>
@@ -64,7 +64,9 @@ export default class WidgetYoutube extends Component {
                             type="range" 
                             className="form-control-range" 
                             id="width" 
-                            step="1" min="1" max="100"
+                            min="1" 
+                            max="100" 
+                            step="10" 
                             onChange={this.onChange}
                             value={width}/>
                     </div>
