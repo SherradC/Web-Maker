@@ -32,7 +32,7 @@ module.exports = function(app){
 // update page
     app.put("/api/page", async (req, res) => {
         const newPage = req.body;
-        const data = await pagesModel.updatePage(newPage);
+        const data = await pageModel.updatePage(newPage);
         res.json(data);
     })
 }
