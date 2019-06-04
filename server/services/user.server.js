@@ -9,39 +9,31 @@ module.exports = function(app){
           if (username && password){
             user = await userModel.findUserByCredentials(username, password)
           } else if (username) {
-            user = await userModel.findUserByUsername(Username);
+            user = await userModel.findUserByUsername(username);
           }
           res.json(user);
       })
+
 // create new user
       app.post("/api/user", async (req, res) => {
         const user = req.body;
         const data = await userModel.createUser(user);
         res.json(data);
       })
+
 // find user by _id
-      app.get("/api/user/:uid", (req, res) => {
+      app.get("/api/user/:uid", async (req, res) => {
           const uid = req.params["uid"];
           let user;
-          user = users.find((user) => {
-              return user._id === uid;
-          })
-
+          user = await userModel.findUserById(uid);
           res.json(user);
       })
 
 //  update user
-      app.put("/api/user", (req, res) => {
+      app.put("/api/user", async (req, res) => {
           const newUser = req.body;
-          users = users.map(
-              (user) => {
-                  if(user._id === newUser._id){
-                      user = newUser
-                  }
-                  return user;
-              }
-          )
-          res.json(newUser);
+          const data = await userModel.updateUser(newUser);
+          res.json(data);
       })
 
 };

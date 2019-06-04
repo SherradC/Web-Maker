@@ -25,11 +25,12 @@ export default class Register extends Component {
 
     async register (username, password, password2) {
         if (password !== password2){
-            alert("Not matching passwords");
+            alert("Passwords do not match");
             return;
         }
         // Check if username is available
         const res = await axios.get(`/api/user?username=${username}`)
+        
         if (res.data){
             alert("Username is taken, try again!")
             return;

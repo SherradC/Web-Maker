@@ -52,9 +52,8 @@ export default class Profile extends Component {
         
         if(username !== oldUsername){
             const res = await axios.get(`/api/user?username=${username}`);
-
             if(res.data){
-                alert("In use, come again!")
+                alert("Username is taken, try again!")
                 return;
             } 
         }
@@ -66,9 +65,8 @@ export default class Profile extends Component {
             firstName,
             lastName
         }
-        const res = await axios.put(`/api/user`, newUser);
+        await axios.put(`/api/user`, newUser);
         alert('Update Successfully')
-        this.showUser(res.data);
     }
     
 
@@ -87,19 +85,47 @@ export default class Profile extends Component {
             <form className="py-5" onSubmit={this.onSubmit} id="profileForm">
                 <div className="">
                     <label className="text-light" htmlFor="Username">Username</label>
-                    <input className="form-control form-group" type="text" id="username" name="username" placeholder="ex. Boston" value={username} onChange={this.onChange}/>
+                    <input 
+                        className="form-control form-group" 
+                        type="text" 
+                        id="username" 
+                        name="username"
+                        placeholder="ex. Boston" 
+                        value={username} 
+                        onChange={this.onChange}/>
                 </div>
                 <div className="">
                     <label className="text-light" htmlFor="Email">Email</label>
-                    <input className="form-control form-group" type="text" placeholder="ex. BBBeans@gmail.com" id="email" value= {email} onChange={this.onChange} name="email"/>
+                    <input 
+                        className="form-control form-group" 
+                        type="text" 
+                        placeholder="ex. BBBeans@gmail.com" 
+                        id="email" 
+                        value= {email} 
+                        onChange={this.onChange} 
+                        name="email"/>
                 </div>
                 <div>
                     <label className="text-light" htmlFor="FirstName">First Name</label>
-                    <input className="form-control form-group" type="text" id="FirstName" name="FirstName" placeholder="Baked" onChange={this.onChange} value={firstName} />
+                    <input 
+                        className="form-control form-group" 
+                        type="text" 
+                        id="firstName" 
+                        name="firstName" 
+                        placeholder="Baked" 
+                        onChange={this.onChange} 
+                        value={firstName} />
                 </div>
                 <div>
                     <label className="text-light" htmlFor="LastName">Last Name</label>
-                    <input className="form-control form-group" type="text" id="LastName" name="LastName" placeholder="Beans" value={lastName} onChange={this.onChange} />
+                    <input 
+                        className="form-control form-group" 
+                        type="text" 
+                        id="lastName" 
+                        name="lastName" 
+                        placeholder="Beans" 
+                        value={lastName} 
+                        onChange={this.onChange} />
                 </div>
                 <div className="form-group" >
                     <Link className="btn btn-outline-warning btn-block but" to={`/user/${this.props.match.params.uid}/website`}>Websites</Link>

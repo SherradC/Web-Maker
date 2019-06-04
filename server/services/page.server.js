@@ -1,52 +1,38 @@
 module.exports = function(app){
+    const pageModel = require("../models/page/page.model");
+
 // get all pages for website
-    app.get("/api/website/:wid/page", (req,res) => {
+    app.get("/api/website/:wid/page", async (req,res) => {
         const wid = req.params["wid"];
-        let result=[];
-        result = pages.filter(
-            (page) => (page.websiteId === wid)
-        );
-        res.json(result);
+        const websites= await pageModel.findAllPagesForWebsite(wid);
+        res.json(websites);
     })
 
 // adding new page 
-    app.post("/api/page", (req,res) => {
+    app.post("/api/page", async (req,res) => {
         const newPage = req.body;
-        pages.push(newPage);
-        res.json(newPage);
+        const data = await pageModel.createPage(newPage);
+        res.json(data);
     })
 
 // get page by give id
-    app.get("/api/page/:pid", (req, res) => {
-        const pid = req.params["pid"];
-        const page = pages.find(
-            (page) => (page._id === pid)
-        )
+    app.get('/api/page/:pid', async (req, res) => {
+        const pid = req.params['pid'];
+        const page = await pageModel.findPageById(pid);
         res.json(page);
-    })
+    });
 
 // delete page by given id
-    app.delete("/api/page/:pid", (req, res) => {
+    app.delete("/api/page/:pid", async (req, res) => {
         const pid = req.params["pid"];
-        const page = pages.find(
-            (page) => (page._id === pid) 
-        )
-        const index = pages.indexOf(page);
-        pages.splice(index, 1);
-        res.json(page);
+        const data = await pageModel.deletePage(pid);
+        res.json(data);
     })
 
 // update page
-    app.put("/api/page", (req, res) => {
+    app.put("/api/page", async (req, res) => {
         const newPage = req.body;
-        pages = pages.map(
-            (page) => {
-                if (page._id === newPage._id) {
-                    page = newPage
-                }
-                return page;
-            }
-        )
-        res.json(newPage);
+        const data = await pagesModel.updatePage(newPage);
+        res.json(data);
     })
 }
