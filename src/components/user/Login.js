@@ -6,12 +6,14 @@ export default class Login extends Component {
   
   state = {
     username: "",
-    password: ""
+    password: "",
+    showAlert: false
   }
 
   onChange = e => { 
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      showAlert: false
     })
      // if (e.target.name === "username"){
       //   this.setState({
@@ -41,7 +43,10 @@ export default class Login extends Component {
     if (res.data){
       this.props.history.push(`/user/${res.data._id}`)
     } else {
-      alert("invalid credential");
+      // alert("invalid credential");
+      this.setState({
+        showAlert: true
+      })
     }
   }
   
@@ -53,6 +58,10 @@ export default class Login extends Component {
             <div className="ptt text-white">
                 <h1>Login</h1>
             </div>
+            {
+              this.state.showAlert?
+              <div className= "alert alert-warning">Your username and password doesn't match</div>: null
+            }
             <div className="logform">
                 <form className="form" onSubmit={this.onSubmit}>
                     <div className="form-group">

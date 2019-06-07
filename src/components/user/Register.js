@@ -8,12 +8,16 @@ export default class Register extends Component {
     state = {
         username: "",
         password: "",
-        password2: ""
+        password2: "",
+        showAlert: false,
+        showPassAlert: false
     }
 
     onChange = e => {
         this.setState({
-            [e.target.name]:e.target.value
+            [e.target.name]:e.target.value,
+            showAlert: false,
+            showPassAlert: false
         })
     }
 
@@ -25,14 +29,20 @@ export default class Register extends Component {
 
     async register (username, password, password2) {
         if (password !== password2){
-            alert("Passwords do not match");
+            // alert("Passwords do not match");
+            this.setState({
+                showPassAlert: true
+            })
             return;
         }
         // Check if username is available
         const res = await axios.get(`/api/user?username=${username}`)
         
         if (res.data){
-            alert("Username is taken, try again!")
+            // alert("Username is taken, try again!")
+            this.setState({
+                showAlert: true
+            })
             return;
         } else {
             const newUser= {
@@ -68,6 +78,8 @@ export default class Register extends Component {
             <div className="ptt text-white">
                 <h1>Register</h1>
             </div>
+    {this.state.showPassAlert && (<div className= "alert alert-warning">The passwords you entered doesn't match, please try it again</div>)}
+    {this.state.showAlert && (<div className= "alert alert-warning">The username is taken, try again</div>)}
             <div className="">
                 <form action="" className="" onSubmit={this.onSubmit}>
                     <div className="form-group">
