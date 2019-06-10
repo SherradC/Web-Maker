@@ -10,14 +10,18 @@ export default class Register extends Component {
         password: "",
         password2: "",
         showAlert: false,
-        showPassAlert: false
+        showPassAlert: false,
+        showUserAlert: false,
+        showPasswAlert: false
     }
 
     onChange = e => {
         this.setState({
             [e.target.name]:e.target.value,
             showAlert: false,
-            showPassAlert: false
+            showPassAlert: false,
+            showUserAlert: false,
+            showPasswAlert: false
         })
     }
 
@@ -28,6 +32,20 @@ export default class Register extends Component {
     }
 
     async register (username, password, password2) {
+        // check username length
+        if(username.length < 4){
+            this.setState({
+                showUserAlert:true
+            })
+            return;
+        }
+        // check username length
+        if(password.length < 4){
+            this.setState({
+                showPasswAlert: true
+            })
+            return;
+        }
         if (password !== password2){
             // alert("Passwords do not match");
             this.setState({
@@ -80,6 +98,8 @@ export default class Register extends Component {
             </div>
     {this.state.showPassAlert && (<div className= "alert alert-warning">The passwords you entered doesn't match, please try it again</div>)}
     {this.state.showAlert && (<div className= "alert alert-warning">The username is taken, try again</div>)}
+    {this.state.showUserAlert && (<div className= "alert alert-warning">The username has to be more than 4 characters</div>)}
+    {this.state.showPasswAlert && (<div className= "alert alert-warning">Your password should be more than four characters</div>)}
             <div className="">
                 <form action="" className="" onSubmit={this.onSubmit}>
                     <div className="form-group">
