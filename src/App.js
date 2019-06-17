@@ -13,43 +13,17 @@ import PageNew from './components/page/PageNew';
 import WidgetChooser from './components/widgets/WidgetChooser';
 import WidgetList from './components/widgets/WidgetList';
 import WidgetEdit from './components/widgets/WidgetEdit';
+import Axios from 'axios';
+import UserManage from "./components/user/UserManage";
 
 
 export default class App extends React.Component {
 
-editWidget = newWidget => {
-    
-    const newWidgets = this.state.widgets.map(
-        (widget) => {
-            if(widget._id === newWidget._id) {
-                widget = newWidget
-            }
-            return widget;
-        }
-    )
-    this.setState({
-        widgets: newWidgets
-    })
-}
-
-addWidget = newWidget => {
-    const newWidgets = this.state.widgets;
-    newWidgets.push(newWidget);
-    this.setState({
-        widgets: newWidgets
-    });
-}
-
-deleteWidget = (wgid) => {
-    const newWidgets = this.state.widgets.filter(
-        (widget) => (
-            widget._id !== wgid
-        )
-    )
-    this.setState({
-        widgets: newWidgets
-    })
-}
+// check if user is loggedIn
+    loggedIn = async () => {
+        const res = await Axios.get("/api/loggedIn");
+        return res.data;
+    }
 
   render() {
     return (
@@ -58,8 +32,9 @@ deleteWidget = (wgid) => {
           <Route exact path="/" component = {Login} />
           <Route exact path="/login" component = {Login} />
           <Route exact path="/register" component = {Register}/>
-          <Route exact path="/user/:uid" component = {Profile}/>
-          <Route exact path="/user/:uid/website" component = {WebsiteList} />
+          <Route exact path="/user/:uid" render ={props => <Profile {...props} loggedIn={this.loggedIn} />}/>
+          <Route exact path="/manage" render={props => <UserManage {...props} loggedIn={this.loggedIn} />}/>
+          <Route exact path="/user/:uid/website" render={props => <WebsiteList {...props} loggedIn={this.loggedIn} />} />
           <Route exact path="/user/:uid/website/new" component = {WebsiteNew} />
           <Route exact path="/user/:uid/website/:wid" component = {WebsiteEdit} />
           <Route exact path="/user/:uid/website/:wid/page" component = {PageList} />

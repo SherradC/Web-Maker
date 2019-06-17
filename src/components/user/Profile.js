@@ -10,25 +10,29 @@ export default class Profile extends Component {
         email: "",
         firstName: "",
         lastName: "",
-        oldUsername: ""
+        oldUsername: "",
+        role: ''
+    };
 
-    }
 
-
-    async componentDidMount(){
-        const uid = this.props.match.params.uid;
-        const res = await axios.get(`/api/user/${uid}`);
-
-        if (res.data){
-            this.showUser(res.data);
-        } else {
-            alert("ID unknown");
+    async componentDidMount() {
+        const isLoggedIn = await this.props.loggedIn();
+        if (isLoggedIn === 0) {
+          this.props.history.push('/login');
+          return;
         }
     
-    }
+        const uid = this.props.match.params.uid;
+        const res = await axios.get(`/api/user/${uid}`);
+        if (res.data) {
+          this.showUser(res.data);
+        } else {
+          alert('No user is found with given id');
+        }
+      }
 
     showUser = (user) => {
-        const {username, email, firstName, password, lastName} = user;
+        const {username, email, firstName, password, lastName, role} = user;
 
         this.setState({
             username, 
@@ -36,7 +40,8 @@ export default class Profile extends Component {
             firstName, 
             lastName,
             password,
-            oldUsername: username
+            oldUsername: username,
+            role
         });
     }
 
@@ -67,7 +72,14 @@ export default class Profile extends Component {
         }
         await axios.put(`/api/user`, newUser);
         alert('Update Successfully')
-    }
+    };
+
+    // Logout the user
+    logout = async () => {
+        await axios.post('/api/logout');
+        this.props.history.push('/login');
+  };
+
     
 
 
