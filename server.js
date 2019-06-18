@@ -26,6 +26,14 @@ if(process.env.SESSION_SECRET) {
 		resave: true,
     	saveUninitialized: true}));
 }
+
+// passport lib
+const passport = require('passport');
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Initialize bodyparser. We are turn on the feature to parse json data.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
