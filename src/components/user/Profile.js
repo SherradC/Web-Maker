@@ -84,7 +84,7 @@ export default class Profile extends Component {
 
 
   render() {
-      const {username, email, firstName, lastName} = this.state;
+      const {username, email, firstName, lastName, role} = this.state;
     return (
       <div>
         <nav className="navbar navbar-light bg-dark fixed-top row">
@@ -144,7 +144,19 @@ export default class Profile extends Component {
                 </div>
                 <div className="form-group">
                     <Link className="btn btn-outline-primary btn-block but" to="/login">Logout</Link>
-                </div>
+                    <button
+                        type='button'
+                        onClick={this.logout}
+                        className='btn btn-danger btn-block'
+                        >
+                        Logout
+                        </button>
+                        {role === 'admin' ? (
+                        <Link className='btn btn-warning btn-block' to='/manage'>
+                            Manage Users
+                        </Link>
+                        ) : null}
+                    </div>
             </form>
         </div>
         <nav className="navbar fixed-bottom bg-dark">

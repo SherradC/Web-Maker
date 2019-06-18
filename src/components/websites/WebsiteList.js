@@ -10,8 +10,14 @@ export default class WebsiteList extends Component {
   }
 
     async componentDidMount(){
-      const res= await axios.get(`/api/user/${this.state.uid}/website`)
-      this.filterWebsites(res.data);
+      const isLoggedIn= await this.props.loggedIn();
+      if(isLoggedIn === 0) {
+        this.props.history.push("/login");
+        return;
+      }
+
+      const res = await axios.get(`/api/user/${this.state.uid}/website`);
+        this.filterWebsites(res.data);
   }
 
   filterWebsites = (websites) => {

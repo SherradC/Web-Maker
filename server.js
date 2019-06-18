@@ -9,6 +9,23 @@ const bodyParser = require('body-parser');
 // http library allows us to create http servers
 const http = require('http');
 const path = require('path');
+
+const cookieParser = require('cookie-parser');
+const session      = require('express-session');
+
+app.use(cookieParser());
+
+if(process.env.SESSION_SECRET) {
+	app.use(session({ 
+		secret: process.env.SESSION_SECRET,
+		resave: true,
+    	saveUninitialized: true }));
+} else {
+	app.use(session({ 
+		secret: 'test',
+		resave: true,
+    	saveUninitialized: true}));
+}
 // Initialize bodyparser. We are turn on the feature to parse json data.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
